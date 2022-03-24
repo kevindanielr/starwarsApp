@@ -1,0 +1,34 @@
+<div class="layout-topbar">
+    <div class="layout-topbar-wrapper">
+        <div class="layout-topbar-left">
+            <a tabindex="0" class="menu-button" (click)="appMain.onMenuButtonClick($event)">
+                <i class="pi pi-bars"></i>
+            </a>
+        </div>
+
+        <app-menu></app-menu>
+
+        <div class="layout-topbar-right">
+            <ul class="layout-topbar-actions">
+
+                <li #profile class="topbar-item user-profile" [ngClass]="{'active-topmenuitem fadeInDown': appMain.activeTopbarItem === profile}">
+                    <a href="#" (click)="appMain.onTopbarItemClick($event,profile)">
+                    </a>
+                    <ul class="fadeInDown">
+                        <li>
+                            <a href="#">
+                                <span>Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>Cerrar Sesión</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>

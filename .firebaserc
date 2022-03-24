@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "cafe-dfbdd": {
+      "hosting": {
+        "starwars-app": [
+          "cafe-dfbdd"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "cafe-dfbdd"
+  }
+}
