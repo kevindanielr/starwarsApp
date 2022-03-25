@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Film } from 'src/app/models';
 
 @Component({
   selector: 'app-crawl-opening',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./crawl-opening.component.scss']
 })
 export class CrawlOpeningComponent implements OnInit {
+
+  @Input() film: Film;
 
   constructor() { }
 

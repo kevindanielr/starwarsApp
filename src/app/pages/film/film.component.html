@@ -38,16 +38,12 @@
                 <div class="p-col-12">
 
                     <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-4 animate__animated animate__fadeIn" *ngFor="let item of [1,1,1,1,1,1]">
-                            <p-card header="Advanced Card" subheader="Card Subheader" styleClass="p-card-shadow">
+                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-4 animate__animated animate__fadeIn" *ngFor="let film of this.films">
+                            <p-card [header]="film?.title" [subheader]="film?.episodeDirectorName" styleClass="p-card-shadow">
                                 <ng-template pTemplate="header">
                                 </ng-template>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur
-                                    error repudiandae numquam deserunt
-                                    quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis
-                                    esse, cupiditate neque quas!</p>
                                 <ng-template pTemplate="footer">
-                                    <p-button label="Opening Crawl" icon="pi pi-eye" (click)="displayCrawl = true">
+                                    <p-button label="Opening Crawl" icon="pi pi-eye" (click)="modalOpening(film)">
                                     </p-button>
                                     <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary"
                                         [style]="{'margin-left': '.5em'}"></p-button>
@@ -66,5 +62,5 @@
 </div>
 
 <p-dialog header="opening Crawl" position="top" [(visible)]="displayCrawl" [style]="{width: '100%', heigth: '100%'}">
-    <app-crawl-opening></app-crawl-opening>
+    <app-crawl-opening [film]="this.selectedFilm"></app-crawl-opening>
 </p-dialog>

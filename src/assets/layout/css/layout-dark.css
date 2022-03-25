@@ -3647,6 +3647,22 @@ a {
   background-size: cover;
   height: 45vh;
 }
+
+.landing-body .landing-banner-character {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  padding: 303px 30px 218px;
+  position: relative;
+  transform-style: inherit;
+  background: url("../../layout/images/pages/asset-landing-header_character.jpg");
+  background-size: cover;
+  height: 45vh;
+}
+
 .landing-body .landing-banner .landing-banner-content {
   text-align: center;
   position: relative;

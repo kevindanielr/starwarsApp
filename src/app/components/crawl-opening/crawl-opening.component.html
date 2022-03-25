@@ -9,20 +9,14 @@
         </div>
 
         <div class="title">
-            <p>Episode IV</p>
-            <p>A New Hope</p>
+            <p>{{ this.film?.episodeNumber }}</p>
+            <p>{{ this.film?.title }}</p>
         </div>
 
         <br>
 
-        <p>It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory
-            against the evil Galactic Empire.</p>
+        <p>{{ this.film?.opening_crawl }}</p>
 
-        <p>During the battle, Rebel spies managed to steal secret plans to the Empire’s ultimate weapon, the DEATH STAR,
-            an armored space station with enough power to destroy an entire planet.</p>
-
-        <p>Pursued by the Empire’s sinister agents, Princess Leia races home aboard her starship, custodian of the
-            stolen plans that can save her people and restore freedom to the galaxy….</p>
     </div>
 </section>
-<embed name="opneing" src="../../../assets/audio/opening.mp3" loop="false" hidden="true" autostart="true">
+<embed name="opening" src="../../../assets/audio/opening.mp3" loop="false" hidden="true" autostart="true">

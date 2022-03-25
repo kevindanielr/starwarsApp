@@ -94,6 +94,7 @@ import { MessageService, SharedModule } from 'primeng/api';
 import { MenuService } from './app.menu.service';
 import { FilmComponent } from './pages/film/film.component';
 import { CrawlOpeningComponent } from './components/crawl-opening/crawl-opening.component';
+import { CharactersComponent } from './pages/characters/characters.component';
 
 @NgModule({
     imports: [
@@ -189,6 +190,7 @@ import { CrawlOpeningComponent } from './components/crawl-opening/crawl-opening.
         AppNotfoundComponent,
         FilmComponent,
         CrawlOpeningComponent,
+        CharactersComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

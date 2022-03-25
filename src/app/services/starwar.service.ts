@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { forkJoin, from, iif, Observable, of } from 'rxjs';
+import { concatMap, map, mergeMap, reduce, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment.prod';
-import { Film, Films } from '../models/film';
+import { Character, Film, requestResponse } from '../models';
+import { requestResponseCharacter } from '../models/responseRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +18,15 @@ export class StarwarService {
   ) { }
 
   getFilms() {
-    return this.http.get<Films>(this.API_URL + 'films').pipe(
+    return this.http.get<requestResponse>(this.API_URL + 'films').pipe(
       map( resp => {
-        return resp.results
-      }),
-      map( (resp: any) => console.log(resp))
-      
+        return resp.results.map( film => Film.filmFromJSON( film ))
+      })
     );
+  }
+
+  getCharacters(page: number) {
+    return this.http.get<requestResponseCharacter>(this.API_URL + 'people/?page=' + page);
   }
 
 }

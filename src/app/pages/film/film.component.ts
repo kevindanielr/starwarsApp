@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StarwarService } from '../../services/starwar.service';
-import { Film } from '../../models/film';
+import { Film } from '../../models';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -11,6 +11,8 @@ import { map } from 'rxjs/operators';
 export class FilmComponent implements OnInit {
 
   displayCrawl: boolean = false;
+  films: Film[];
+  selectedFilm: Film;
 
   constructor(
     private swService: StarwarService
@@ -21,8 +23,16 @@ export class FilmComponent implements OnInit {
   }
 
   getFilms() {
-    this.swService.getFilms().subscribe( films => console.log(films));
+    this.swService.getFilms().subscribe( (films: Film[]) => {
+      this.films = films;
+      console.log(this.films);
+    });
      
+  }
+
+  modalOpening(film: Film) {
+    this.selectedFilm = film;
+    this.displayCrawl = true;
   }
 
 }
