@@ -1,3 +1,13 @@
 .title {
     font-family: 'Star Jedi', arial; color: #fed507;
 }
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title-page {
+    padding: 60px;
+}

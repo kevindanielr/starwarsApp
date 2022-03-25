@@ -1,9 +1,26 @@
+
+<div class="landing-body animate__animated animate__fadeIn">
+    <div class="landing-wrapper">
+        <div id="home" class="landing-banner">
+            <div class="landing-banner-content">
+                <span class="title">Starwars films</span>
+                <h3>I know what i have to do but i don't know if i have the strength to do it</h3>
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
+                    <input type="text" pInputText placeholder="Search Films">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
 <div class="layout-dashboard">
-    <div class="p-grid">
+    <br>
+    <div class="p-grid box">
         <div class="p-col-8">
-            <div class="notification">
-                <h6>Hope is like the sun. If you only believe it when you see it, you'll never make it through the night
-                </h6> <br>
+            <div class="notification animate__animated animate__fadeIn">
 
                 <h6>👋
                     Welcome! StarWars App is a tool to facilitate the search for movies and characters from
@@ -16,26 +33,12 @@
             </div>
         </div>
 
-        <div class="p-col-4">
-            <div class="notification">
-                <h6>I know what i have to do but i don't know if i have the strength to do it 💪 <a> <i
-                            class="pi pi-arrow-up"></i></a></h6>
-                <br>
-                <div class="p-inputgroup">
-                    <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-                    <input type="text" pInputText placeholder="Search Films">
-                </div>
-            </div>
-        </div>
-
         <div class="p-col-12">
-            <div class="p-grid" style="margin: -1rem;">
+            <div class="p-grid box title-page" style="margin: -1rem;">
                 <div class="p-col-12">
 
-                    <h3>Films</h3>
-
                     <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-3" *ngFor="let item of [1,1,1,1,1,1,1]">
+                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-4 animate__animated animate__fadeIn" *ngFor="let item of [1,1,1,1,1,1]">
                             <p-card header="Advanced Card" subheader="Card Subheader" styleClass="p-card-shadow">
                                 <ng-template pTemplate="header">
                                 </ng-template>
@@ -44,7 +47,8 @@
                                     quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis
                                     esse, cupiditate neque quas!</p>
                                 <ng-template pTemplate="footer">
-                                    <p-button label="Opening Crawl" icon="pi pi-eye" (click)="displayCrawl = true"></p-button>
+                                    <p-button label="Opening Crawl" icon="pi pi-eye" (click)="displayCrawl = true">
+                                    </p-button>
                                     <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary"
                                         [style]="{'margin-left': '.5em'}"></p-button>
                                 </ng-template>
@@ -55,6 +59,10 @@
             </div>
         </div>
     </div>
+
+
+    
+
 </div>
 
 <p-dialog header="opening Crawl" position="top" [(visible)]="displayCrawl" [style]="{width: '100%', heigth: '100%'}">

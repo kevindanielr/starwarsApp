@@ -2464,6 +2464,9 @@ a {
   font-size: 14px;
 }
 .layout-footer .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -3642,7 +3645,7 @@ a {
   transform-style: inherit;
   background: url("../../layout/images/pages/asset-landing-header.jpg");
   background-size: cover;
-  height: 80vh;
+  height: 45vh;
 }
 .landing-body .landing-banner .landing-banner-content {
   text-align: center;
@@ -3859,7 +3862,7 @@ a {
   position: relative;
 }
 .landing-body .layout-footer .footer-menutitle {
-  color: rgba(41, 50, 65, 0.2);
+  color: rgba(245, 248, 255, 0.753);
 }
 .landing-body .layout-footer .footer-subtitle {
   color: rgba(41, 50, 65, 0.3);

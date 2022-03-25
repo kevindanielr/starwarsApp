@@ -11,6 +11,7 @@ import { FilmComponent } from './pages/film/film.component';
             {
                 path: '', component: AppMainComponent,
                 children: [
+                    {path: '', component: FilmComponent},
                     {path: 'films', component: FilmComponent},
                 ]
             },
