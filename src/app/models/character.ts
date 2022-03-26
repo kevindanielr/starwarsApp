@@ -26,8 +26,19 @@ export class Character {
         public films:      string[],
     ) {}
 
+    get filmsArray() {
+        let filmsLocal = JSON.parse(localStorage.getItem('films'));
+        return this.films.map( film => {
+            return filmsLocal.find( filmFind => filmFind.episode_id === parseInt(film.split('/')[5])) 
+        })
+    }
+
 }
 
-export interface eyeColor {
+export interface EyeColor {
     eye_color: string;
+}
+
+export interface Gender {
+    gender: string;
 }

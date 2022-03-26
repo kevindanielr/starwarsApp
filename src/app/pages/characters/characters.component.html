@@ -28,17 +28,34 @@
             </div>
         </div>
 
-        <div class="p-col-4">
+
+        <div class="p-col-8">
             <div class="notification animate__animated animate__fadeIn">
                 <div class="p-grid">
-                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 animate__animated animate__fadeIn">
-                        <p-multiSelect [options]="eyeColor" [(ngModel)]="selectedEyeColor"
+                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 box animate__animated animate__fadeIn">
+
+                        <!-- <h5>Eye color</h5> -->
+                        <p-dropdown (onChange)="filter($event)" appendTo="body" [options]="eyeColors" [(ngModel)]="selectedEyeColor" optionLabel="eye_color"
+                            [filter]="true" filterBy="eye_color" [showClear]="true" placeholder="Select a Eye Color">
+                            <ng-template pTemplate="selectedItem">
+                                <div class="country-item country-item-value" *ngIf="selectedEyeColor">
+                                    <div>{{selectedEyeColor.eye_color | titlecase}}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-eyeColor pTemplate="item">
+                                <div class="eyeColor-item">
+                                    <div>{{eyeColor.eye_color | titlecase}}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+
+                        <!-- <p-multiSelect [options]="eyeColors" [(ngModel)]="selectedEyeColor" (onChange)="filter($event)"
                             defaultLabel="Select a Eye color" optionLabel="eye_color" class="multiselect-custom"
                             appendTo="body">
                             <ng-template let-value pTemplate="selectedItems">
                                 <div class="country-item country-item-value" *ngFor="let option of selectedEyeColor">
-                                    <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + option.code.toLowerCase()" /> -->
-                                    <div>{{option.eye_color}}</div>
+                                    
+                                    <div>{{option.eye_color | titlecase}}</div>
                                 </div>
                                 <div *ngIf="!selectedEyeColor || selectedEyeColor.length === 0"
                                     class="country-placeholder">
@@ -47,56 +64,68 @@
                             </ng-template>
                             <ng-template let-eyeColor pTemplate="item">
                                 <div class="country-item">
-                                    <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" /> -->
+                                    
                                     <div>{{eyeColor.eye_color | titlecase}}</div>
                                 </div>
                             </ng-template>
-                        </p-multiSelect>
+                        </p-multiSelect> -->
                     </div>
 
 
-                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 animate__animated animate__fadeIn">
-                        <p-multiSelect [options]="eyeColor" [(ngModel)]="selectedEyeColor"
-                            defaultLabel="Select a Gender" optionLabel="eye_color" class="multiselect-custom"
+                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 box animate__animated animate__fadeIn">
+                        
+                        <p-dropdown (onChange)="filter($event)" appendTo="body" [options]="genders" [(ngModel)]="selectedGender" optionLabel="gender"
+                            [filter]="true" filterBy="gender" [showClear]="true" placeholder="Select a Gender">
+                            <ng-template pTemplate="selectedItem">
+                                <div class="country-item country-item-value" *ngIf="selectedGender">
+                                    <div>{{selectedGender.gender | titlecase}}</div>
+                                </div>
+                            </ng-template>
+                            <ng-template let-gender pTemplate="item">
+                                <div class="gender-item">
+                                    <div>{{gender.gender | titlecase}}</div>
+                                </div>
+                            </ng-template>
+                        </p-dropdown>
+                        
+                        <!-- <p-multiSelect [options]="genders" [(ngModel)]="selectedGender" (onChange)="filter($event)"
+                            defaultLabel="Select a Gender" optionLabel="gender" class="multiselect-custom"
                             appendTo="body">
                             <ng-template let-value pTemplate="selectedItems">
-                                <div class="country-item country-item-value" *ngFor="let option of selectedEyeColor">
-                                    <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + option.code.toLowerCase()" /> -->
-                                    <div>{{option.eye_color}}</div>
+                                <div class="country-item country-item-value" *ngFor="let option of selectedGender">
+                                  
+                                    <div>{{option.gender}}</div>
                                 </div>
-                                <div *ngIf="!selectedEyeColor || selectedEyeColor.length === 0"
-                                    class="country-placeholder">
+                                <div *ngIf="!selectedGender || selectedGender.length === 0" class="country-placeholder">
                                     Select a Gender
                                 </div>
                             </ng-template>
-                            <ng-template let-eyeColor pTemplate="item">
+                            <ng-template let-gender pTemplate="item">
                                 <div class="country-item">
-                                    <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" /> -->
-                                    <div>{{eyeColor.eye_color | titlecase}}</div>
+                                    
+                                    <div>{{gender.gender | titlecase}}</div>
                                 </div>
                             </ng-template>
-                        </p-multiSelect>
+                        </p-multiSelect> -->
                     </div>
 
 
-                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 animate__animated animate__fadeIn">
-                        <p-multiSelect [options]="eyeColor" [(ngModel)]="selectedEyeColor"
-                            defaultLabel="Select a Film" optionLabel="eye_color" class="multiselect-custom"
-                            appendTo="body">
+                    <div class="p-col-12 p-md-12 p-lg-4 p-xl-4 box animate__animated animate__fadeIn">
+                        <p-multiSelect [options]="this.films" [(ngModel)]="selectedFilms" defaultLabel="Select a Film"
+                            optionLabel="title" class="multiselect-custom" appendTo="body">
                             <ng-template let-value pTemplate="selectedItems">
-                                <div class="country-item country-item-value" *ngFor="let option of selectedEyeColor">
+                                <div class="country-item country-item-value" *ngFor="let option of selectedFilms">
                                     <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + option.code.toLowerCase()" /> -->
-                                    <div>{{option.eye_color}}</div>
+                                    <div>{{option.title}}</div>
                                 </div>
-                                <div *ngIf="!selectedEyeColor || selectedEyeColor.length === 0"
-                                    class="country-placeholder">
+                                <div *ngIf="!selectedFilms || selectedFilms.length === 0" class="country-placeholder">
                                     Select a Film
                                 </div>
                             </ng-template>
-                            <ng-template let-eyeColor pTemplate="item">
+                            <ng-template let-film pTemplate="item">
                                 <div class="country-item">
                                     <!-- <img src="assets/showcase/images/demo/flag/flag_placeholder.png" [class]="'flag flag-' + country.code.toLowerCase()" /> -->
-                                    <div>{{eyeColor.eye_color | titlecase}}</div>
+                                    <div>{{film.title | titlecase}}</div>
                                 </div>
                             </ng-template>
                         </p-multiSelect>
@@ -119,13 +148,11 @@
                                 <p><a>Eye color:</a> {{ this.character?.eye_color | titlecase }}</p>
                                 <p><a>Gender:</a> {{ this.character?.gender | titlecase }}</p>
 
-                                <ng-template pTemplate="footer">
+                                <br>
+                                <p><a>Films:</a></p>
 
-                                    <!-- <p-button label="Opening Crawl" icon="pi pi-eye" (click)="modalOpening(film)">
-                                    </p-button>
-                                    <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary"
-                                        [style]="{'margin-left': '.5em'}"></p-button> -->
-                                </ng-template>
+                                <p-listbox [options]="this.character?.filmsArray" optionLabel="title"
+                                    (onClick)="selectFilm( $event )"></p-listbox>
                             </p-card>
                         </div>
                     </div>
@@ -133,16 +160,13 @@
             </div>
         </div>
 
-        <p-paginator [rows]="10" [totalRecords]="this.rspCharacter?.count" (onPageChange)="paginate($event)">
+        <p-paginator #p [rows]="10" [totalRecords]="this.charactersFilter?.length" (onPageChange)="paginate($event)">
         </p-paginator>
 
     </div>
 
-
-
-
 </div>
 
-<!-- <p-dialog header="opening Crawl" position="top" [(visible)]="displayCrawl" [style]="{width: '100%', heigth: '100%'}">
+<p-dialog header="opening Crawl" position="top" [(visible)]="displayCrawl" [style]="{width: '100%', heigth: '100%'}">
     <app-crawl-opening [film]="this.selectedFilm"></app-crawl-opening>
-</p-dialog> -->
+</p-dialog>
