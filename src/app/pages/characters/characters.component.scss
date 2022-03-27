@@ -11,3 +11,94 @@
 .title-page {
     padding: 60px;
 }
+
+.character-badge {
+	border-radius: 10px;
+	padding: .25em .5rem;
+	// text-transform: uppercase;
+	font-weight: 700;
+	font-size: 12px;
+	letter-spacing: .3px;
+
+	&.eye-red {
+		background: #ff6666;
+		color: #480000;
+	}
+
+	&.eye-blue {
+		background: #668cff;
+		color: #001e75;
+	}
+
+	&.eye-green {
+		background: #99e699;
+		color: #248f24;
+	}
+
+	&.eye-yellow {
+		background: #fbfb6a;
+		color: #7e7e03;
+	}
+
+	&.eye-brown {
+		background: #d7730f;
+		color: #502b05;
+	}
+
+	&.eye-blue-gray {
+		background: #8ba5da;
+		color: #1b2d52;
+	}
+
+    &.eye-black {
+		background: #000000;
+		color: #ffffff;
+        border-color: #ffffff
+	}
+
+    &.eye-hazel {
+		background: #b4c8ac;
+		color: #3a4d33;
+	}
+
+    &.eye-pink {
+		background: #eeaaee;
+		color: #941e94;
+	}
+
+    &.eye-gold {
+		background: #ffcf33;
+		color: #755a00;
+	}
+
+    &.eye-orange {
+		background: #ffc299;
+		color: #e65c00;
+	}
+
+    &.eye-unknown {
+		background: #FFFFFF;
+		color: #000000;
+	}
+
+    &.gender-male {
+		background: #668cff;
+		color: #001e75;
+	}
+
+    &.gender-female {
+		background: #eeaaee;
+		color: #941e94;
+	}
+
+    &.gender-hermaphrodite {
+		background: #dd99ff;
+		color: #7700b3;
+	}
+
+    &.gender-none {
+		background: #FFFFFF;
+		color: #000000;
+	}
+
+}

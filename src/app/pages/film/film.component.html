@@ -19,7 +19,7 @@
 <div class="layout-dashboard">
     <br>
     <div class="p-grid box">
-        <div class="p-col-8">
+        <div class="p-col-12 p-md-8">
             <div class="notification animate__animated animate__fadeIn">
 
                 <h6>👋
@@ -45,7 +45,7 @@
                                 <ng-template pTemplate="footer">
                                     <p-button label="Opening Crawl" icon="pi pi-eye" (click)="modalOpening(film)">
                                     </p-button>
-                                    <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary"
+                                    <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary" (click)="goCharacterFilm(film.idUrl)"
                                         [style]="{'margin-left': '.5em'}"></p-button>
                                 </ng-template>
                             </p-card>
@@ -64,3 +64,9 @@
 <p-dialog header="opening Crawl" position="top" [(visible)]="displayCrawl" [style]="{width: '100%', heigth: '100%'}">
     <app-crawl-opening [film]="this.selectedFilm"></app-crawl-opening>
 </p-dialog>
+
+<ng-template #customLoadingTemplate>
+    <app-loading></app-loading>
+</ng-template>
+
+<ngx-loading [show]="loading" [template]="customLoadingTemplate"></ngx-loading>

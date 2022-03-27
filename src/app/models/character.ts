@@ -29,7 +29,7 @@ export class Character {
     get filmsArray() {
         let filmsLocal = JSON.parse(localStorage.getItem('films'));
         return this.films.map( film => {
-            return filmsLocal.find( filmFind => filmFind.episode_id === parseInt(film.split('/')[5])) 
+            return filmsLocal.find( filmFind => filmFind.url === film) 
         })
     }
 

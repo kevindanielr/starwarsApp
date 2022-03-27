@@ -15,6 +15,7 @@ import { CharactersComponent } from './pages/characters/characters.component';
                     {path: '', component: FilmComponent},
                     {path: 'films', component: FilmComponent},
                     {path: 'characters', component: CharactersComponent},
+                    {path: 'characters/:idFilm', component: CharactersComponent},
                 ]
             },
             {path: 'notfound', component: AppNotfoundComponent},

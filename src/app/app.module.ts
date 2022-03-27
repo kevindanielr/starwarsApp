@@ -96,6 +96,9 @@ import { FilmComponent } from './pages/film/film.component';
 import { CrawlOpeningComponent } from './components/crawl-opening/crawl-opening.component';
 import { CharactersComponent } from './pages/characters/characters.component';
 
+import { ngxLoadingAnimationTypes, NgxLoadingModule } from 'ngx-loading';
+import { LoadingComponent } from './components/loading/loading.component';
+
 @NgModule({
     imports: [
         CommonModule,
@@ -178,7 +181,12 @@ import { CharactersComponent } from './pages/characters/characters.component';
         TreeModule,
         TreeTableModule,
         VirtualScrollerModule,
-        SharedModule
+        SharedModule,
+        NgxLoadingModule.forRoot({
+            animationType: ngxLoadingAnimationTypes.none,
+            backdropBackgroundColour: 'rgba(0,0,0,0.6)',
+            fullScreenBackdrop: true
+        })
     ],
     declarations: [
         AppComponent,
@@ -191,6 +199,7 @@ import { CharactersComponent } from './pages/characters/characters.component';
         FilmComponent,
         CrawlOpeningComponent,
         CharactersComponent,
+        LoadingComponent,
     ],
     providers: [
         {provide: LocationStrategy, useClass: HashLocationStrategy},

@@ -14,3 +14,8 @@ export interface requestResponseCharacter {
     previous: null;
     results:  Character[];
 }
+
+export interface requestResponseFilm {
+    title:       string;
+    characters:  Character[];
+}

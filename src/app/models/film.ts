@@ -6,6 +6,7 @@ export class Film {
             obj['episode_id'],
             obj['opening_crawl'],
             obj['director'],
+            obj['url'],
             obj['characters']
         );
     }
@@ -15,6 +16,7 @@ export class Film {
         public episode_id:    number,
         public opening_crawl: string,
         public director:      string,
+        public url:           string,
         public characters:    string[]
     ) {}
 
@@ -25,6 +27,10 @@ export class Film {
     get episodeNumber() {
         return `Episode ${ this.convertToRoman(this.episode_id) }`
     }
+
+    get idUrl() {
+        return this.url.split('/')[5];
+    } 
 
     convertToRoman(num) {
         var roman = {

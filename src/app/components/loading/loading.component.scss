@@ -1,0 +1,143 @@
+.back {
+    background: #1B1B1B !important;
+    position: fixed;
+    // animation: background-light 1s;
+    // animation-delay: 3.5s;
+    // animation-fill-mode: forwards;
+    // animation-iteration-count: 1;
+    // animation-timing-function: ease-in-out;
+}
+
+svg {
+    // background: #1B1B1B;
+    max-width: 80%;
+    max-height: 80%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+#contours {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+#contours-visage {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 5s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+#details {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 10s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+#details-visage {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 15s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+#details-visage-2 {
+    fill: none;
+    stroke: white;
+    stroke-width: 0.5;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 35s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+#eyes-color {
+    opacity: 0;
+    fill: white;
+    animation: show 4s;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+#light-saber {
+    opacity: 0;
+    fill: url(#gradient);
+    filter: url(#f1);
+    animation: plasma 1s;
+    animation-delay: 3.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+#light-saber-2 {
+    fill: none;
+    stroke: white;
+    stroke-width: 1;
+    stroke-miterlimit: 10;
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+    animation: draw 3s;
+    animation-delay: 3.5s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes show {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes plasma {
+    to {
+        opacity: 1;
+    }
+}
