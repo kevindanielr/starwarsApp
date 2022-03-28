@@ -1,8 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EMPTY, forkJoin, from, iif, Observable, of } from 'rxjs';
-import { concatMap, expand, map, mergeMap, reduce, tap } from 'rxjs/operators';
+
+import { EMPTY, forkJoin, Observable } from 'rxjs';
+import { expand, map, mergeMap, reduce, tap } from 'rxjs/operators';
+
 import { environment } from '../../environments/environment.prod';
+
 import { Character, Film, requestResponse } from '../models';
 
 @Injectable({
@@ -16,6 +19,9 @@ export class StarwarService {
         private http: HttpClient
     ) {}
 
+    /**
+    * [Getting all films and saving to localstorage]
+    */
     getFilms() {
         return this.http.get < requestResponse > (this.API_URL + 'films').pipe(
             map(resp => {
@@ -25,10 +31,18 @@ export class StarwarService {
         );
     }
 
+    /**
+    * [Getting a singular character]
+    * @param  {string} url   [url to use in next request]
+    * @return {Character}     [Characters info]
+    */
     public getCharacter(url ? : string): Observable < requestResponse > {
         return this.http.get < requestResponse > (url && url?.length > 0 ? url : `${this.API_URL}people/?page=1`);
     }
 
+    /**
+    * [Get all the characters one by one, until the response of next is null]
+    */
     public getAllCharacter(): Observable < Character[] > {
         // the first call is with no parameter so that the default url with no offset is used
         return this.getCharacter().pipe(
@@ -42,6 +56,11 @@ export class StarwarService {
         )
     }
 
+    /**
+    * [Get all the characters of a film one by one]
+    * @param  {number} idFilm   [idFilm]
+    * @return {Character[]}     [Array Characters]
+    */
     getCharactersFilm(idFilm: number) {
         return this.http.get(this.API_URL + "/films/" + idFilm).pipe(
             mergeMap((film: Film) => {

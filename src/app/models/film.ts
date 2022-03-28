@@ -1,5 +1,6 @@
 export class Film {
 
+    // Convert from JSON to object of type Character
     static filmFromJSON( obj: Object) {
         return new Film(
             obj['title'],
@@ -20,19 +21,33 @@ export class Film {
         public characters:    string[]
     ) {}
 
+    /**
+    * [Return a episode name with director name]
+    */
     get episodeDirectorName() {
         return `Episode ${ this.convertToRoman(this.episode_id) } / Director: ${this.director}`
     }
 
+    /**
+    * [Return a episode number Roman]
+    */
     get episodeNumber() {
         return `Episode ${ this.convertToRoman(this.episode_id) }`
     }
 
+    /**
+    * [Return the id of the movie url]
+    */
     get idUrl() {
         return this.url.split('/')[5];
     } 
 
-    convertToRoman(num) {
+    /**
+    * [Returns a Roman number]
+    * @param  {number} num  [The number you want to convert]
+    * @return {string}      [Roman number]
+    */
+    convertToRoman(num: number) {
         var roman = {
           M: 1000,
           CM: 900,

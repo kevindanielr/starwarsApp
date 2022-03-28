@@ -1,5 +1,6 @@
 export class Character {
 
+    // Convert from JSON to object of type Character
     static characterFromJSON( obj: Object) {
         return new Character(
             obj['name'],
@@ -26,6 +27,9 @@ export class Character {
         public films:      string[],
     ) {}
 
+    /**
+    * [Return an array of movie names]
+    */
     get filmsArray() {
         let filmsLocal = JSON.parse(localStorage.getItem('films'));
         return this.films.map( film => {

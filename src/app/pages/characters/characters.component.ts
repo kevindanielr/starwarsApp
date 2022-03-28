@@ -1,13 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Character, requestResponse } from 'src/app/models';
-import { EyeColor } from 'src/app/models/character';
-import { requestResponseCharacter, requestResponseFilm } from 'src/app/models/responseRequest';
-import { StarwarService } from 'src/app/services/starwar.service';
-import { Film } from '../../models/film';
-import { Gender } from '../../models/character';
-import { Paginator } from 'primeng/paginator';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ActivatedRoute } from '@angular/router';
+
+import { Character, Film, requestResponseCharacter, requestResponseFilm } from 'src/app/models';
+import { Gender, EyeColor } from '../../models/character';
+
+import { StarwarService } from 'src/app/services/starwar.service';
+import { Paginator } from 'primeng/paginator';
 
 @Component({
   selector: 'app-characters',
@@ -16,16 +14,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CharactersComponent implements OnInit {
 
+  // Variables for handling characters 
+  characters: Character[];// All characters
+  charactersPage: Character[];// Characters per page
+  charactersFilter: Character[];// Characters by filters
 
-  rspCharacter: requestResponseCharacter;
-  characters: Character[];
-  charactersPage: Character[];
-  charactersFilter: Character[];
-
-  selectedFilmCrawl: Film;
-  displayCrawl: boolean = false;
+  // Flag for show characters from a movie
   isCharactersFilm: boolean = false;
 
+  // Object Film selected for show opening crawl
+  selectedFilmCrawl: Film;
+  displayCrawl: boolean = false;
+  actualTitle: string = "";
+  idFilm: number;
+
+  // Variables for dropdown filters
   eyeColors: EyeColor[] =[
     {eye_color: 'red'},
     {eye_color: 'blue'},
@@ -39,7 +42,6 @@ export class CharactersComponent implements OnInit {
     {eye_color: 'gold'},
     {eye_color: 'unknown'}
   ];
-
   genders: Gender[] =[
     {gender: 'Male'},
     {gender: 'Female'},
@@ -47,18 +49,17 @@ export class CharactersComponent implements OnInit {
     {gender: 'None'},
     {gender: 'N/A'}
   ];
-
   films: Film[];
 
+  // Variables for filters
   selectedEyeColor: EyeColor = null;
   selectedGender: Gender = null;
   selectedFilm: Film = null;
 
-  actualTitle: string = "";
-
-  idFilm: number;
+  // Flag loading
   loading: boolean = false;
 
+  // String for searchbar
   searchTerm: string = "";
 
   @ViewChild('p', {static: false}) paginator: Paginator;
@@ -69,28 +70,34 @@ export class CharactersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // Getting movies from localstorage
     this.films = JSON.parse(localStorage.getItem('films'));
 
+    // Getting Film id in url
     this.activadedRoute.params.subscribe( params => {
       this.idFilm = params['idFilm'];
-      
       if (this.idFilm !== undefined) {
+        // Getting characters from a film
         this.getFilmCharacter(this.idFilm);
         this.isCharactersFilm = true;
       } else {
+        // Getting all the characters
         this.getAllCharacters();
-      }
-      
+      } 
     });
-
-
   }
 
+  /**
+   * [Show on modal screen with opening crawl]
+   */
   selectFilm( event ) {
     this.selectedFilmCrawl = Film.filmFromJSON(event.value);
     this.displayCrawl = true;
   }
 
+  /**
+   * [Getting all the characters]
+   */
   getAllCharacters(){
     this.loading = true;
     this.actualTitle = "";
@@ -105,6 +112,9 @@ export class CharactersComponent implements OnInit {
     })
   }
 
+  /**
+   * [Getting all characters from a specific movie]
+   */
   getFilmCharacter(idFilm : number) {
     this.loading = true;
     this.swService.getCharactersFilm( idFilm ).subscribe(  (response: requestResponseFilm) => {
@@ -118,10 +128,16 @@ export class CharactersComponent implements OnInit {
     })
   }
 
+  /**
+   * [Page change]
+   */
   paginate(event) {
     this.charactersPage = this.charactersFilter.slice(event.page * 10, (event.page + 1) * 10); 
   }
 
+  /**
+   * [Reset page and filter characters depending on selection of p-selects]
+   */
   filter(event?) {
     this.paginator.changePage(0);
     
@@ -153,38 +169,18 @@ export class CharactersComponent implements OnInit {
       
       this.charactersPage = tempCharacters.slice(0, 10); 
       this.charactersFilter = tempCharacters;
-      
     }
-    
   }
 
-  filterGender(event) {
-
-    this.paginator.changePage(0);
-    
-    if (event.value === null) {
-      this.charactersFilter = this.characters;
-      this.charactersPage = this.characters.slice(0, 10); 
-    } else {
-      
-      let tempCharacters = [] = this.characters.filter( character => character.eye_color.includes(event.value.eye_color)  )
-
-      this.charactersPage = tempCharacters.slice(0, 10); 
-      this.charactersFilter = tempCharacters;
-    }
-    
-  }
-
-  search( event ) {   
-    console.log(this.searchTerm);
-     
+  /**
+   * [Search for characters by term]
+   */
+  search( event ) {        
     if (this.searchTerm === "") {
       this.filter();
     } else {
       this.charactersFilter = this.charactersFilter.filter( character => character.name.toLowerCase().includes(this.searchTerm.toLowerCase()) )
-      this.charactersPage = this.charactersFilter.slice(0, 10); 
-      console.log(this.charactersFilter);
-      
+      this.charactersPage = this.charactersFilter.slice(0, 10);       
     }
   }
 

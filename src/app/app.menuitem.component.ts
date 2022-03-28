@@ -23,7 +23,6 @@ import {AppMainComponent} from './app.main.component';
 			   [routerLink]="item.routerLink" routerLinkActive="active-route" [ngClass]="item.class" pRipple
 			   [routerLinkActiveOptions]="{exact: true}" [attr.target]="item.target" [attr.tabindex]="0">
                <img [src]="item.icon" alt="">
-				<!-- <i [ngClass]="item.icon" class="layout-menuitem-icon"></i> -->
 				<span class="layout-menuitem-text">{{item.label}}</span>
 				<i class="pi pi-fw pi-chevron-down layout-submenu-toggler" *ngIf="item.items"></i>
 			</a>
