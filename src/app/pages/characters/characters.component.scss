@@ -8,6 +8,12 @@
     justify-content: center;
 }
 
+.box-character {
+    display: flex;
+    justify-content: center;
+}
+
+
 .title-page {
     padding: 60px;
 }
@@ -87,12 +93,12 @@
 	}
 
     &.gender-female {
-		background: #eeaaee;
+		background: #f0b3f0;
 		color: #941e94;
 	}
 
     &.gender-hermaphrodite {
-		background: #dd99ff;
+		background: #d560fb;
 		color: #7700b3;
 	}
 

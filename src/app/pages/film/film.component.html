@@ -4,10 +4,10 @@
         <div id="home" class="landing-banner">
             <div class="landing-banner-content">
                 <span class="title">Starwars films</span>
-                <h3>I know what i have to do but i don't know if i have the strength to do it</h3>
+                <h3>I know what i have to do but i don't know if i have the strength to do it.</h3>
                 <div class="p-inputgroup">
                     <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-                    <input type="text" pInputText placeholder="Search Films">
+                    <input (keyup)="search($event)" [(ngModel)]="searchTerm" type="text" pInputText placeholder="Search Films">
                 </div>
             </div>
         </div>
@@ -28,32 +28,34 @@
 
                     Type to show results.
 
-                    If you want to see all the characters related to the saga, go to the <a>Characters<i
+                    If you want to see all the characters related to the saga, go to the <a [routerLink]="['/characters']">Characters<i
                             class="pi pi-arrow-up"></i>.</a> section.</h6>
             </div>
         </div>
+    </div>
 
-        <div class="p-col-12">
-            <div class="p-grid box title-page" style="margin: -1rem;">
-                <div class="p-col-12">
-
-                    <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-4 animate__animated animate__fadeIn" *ngFor="let film of this.films">
-                            <p-card [header]="film?.title" [subheader]="film?.episodeDirectorName" styleClass="p-card-shadow">
-                                <ng-template pTemplate="header">
-                                </ng-template>
-                                <ng-template pTemplate="footer">
-                                    <p-button label="Opening Crawl" icon="pi pi-eye" (click)="modalOpening(film)">
-                                    </p-button>
-                                    <p-button label="Characters Film" icon="pi pi-user" styleClass="p-button-secondary" (click)="goCharacterFilm(film.idUrl)"
-                                        [style]="{'margin-left': '.5em'}"></p-button>
-                                </ng-template>
-                            </p-card>
+    <div class="p-grid">
+        <div class="p-col-12 p-md-6 p-lg-6 p-xl-4 animate__animated animate__fadeIn" *ngFor="let film of this.filmsFilter">
+            <p-card [header]="film?.title" [subheader]="film?.episodeDirectorName" styleClass="p-card-shadow">
+                <ng-template pTemplate="header">
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <div class="p-fluid p-formgrid p-grid">
+    
+                        <div class="p-col-6 p-md-6 animate__animated animate__fadeIn">
+    
+                            <p-button styleClass="p-button-outlined" (click)="modalOpening(film)"> <img [style]="{'margin-left': '.5em'}" src="../../assets/icon/open.png" alt="">&nbsp;&nbsp;Opening Crawl </p-button>
+                        </div>
+                        <div class="p-col-6 p-md-6 animate__animated animate__fadeIn">
+    
+                            <p-button styleClass="p-button-secondary p-button-outlined box" (click)="goCharacterFilm(film.idUrl)"
+                                [style]="{'margin-left': '.5em'}"> <img src="../../assets/icon/chew.png" alt=""> Characters Film</p-button>
                         </div>
                     </div>
-                </div>
-            </div>
+                </ng-template>
+            </p-card>
         </div>
+
     </div>
 
 

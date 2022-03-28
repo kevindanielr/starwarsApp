@@ -13,8 +13,10 @@ export class FilmComponent implements OnInit {
 
   displayCrawl: boolean = false;
   films: Film[];
+  filmsFilter: Film[];
   selectedFilm: Film;
   loading: boolean = false;
+  searchTerm: string = "";
 
   constructor(
     private swService: StarwarService,
@@ -29,6 +31,7 @@ export class FilmComponent implements OnInit {
     this.loading = true;
     this.swService.getFilms().subscribe( (films: Film[]) => {
       this.films = films;
+      this.filmsFilter = films;
       this.loading = false;
     }, error => {
       this.loading = false;
@@ -42,6 +45,14 @@ export class FilmComponent implements OnInit {
   modalOpening(film: Film) {
     this.selectedFilm = film;
     this.displayCrawl = true;
+  }
+
+  search( event ) {    
+    if (this.searchTerm === "") {
+      this.filmsFilter = this.films;
+    } else {
+      this.filmsFilter = this.films.filter( film => film.title.toLowerCase().includes(this.searchTerm.toLowerCase()) )
+    }
   }
 
 }

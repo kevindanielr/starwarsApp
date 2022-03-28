@@ -22,7 +22,7 @@
 }
 
 .p-component {
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
   font-size: 1rem;
   font-weight: normal;
 }
@@ -50,7 +50,7 @@
 
 .p-link {
   font-size: 1rem;
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
   border-radius: 6px;
 }
 .p-link:focus {
@@ -184,7 +184,7 @@
   padding: 0.25rem 0;
 }
 .p-autocomplete .p-autocomplete-multiple-container .p-autocomplete-input-token input {
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
   font-size: 1rem;
   color: #EAEBEC;
   padding: 0;
@@ -618,7 +618,7 @@ p-checkbox.ng-dirty.ng-invalid > .p-checkbox > .p-checkbox-box {
   padding: 0.25rem 0;
 }
 .p-chips .p-chips-multiple-container .p-chips-input-token input {
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
   font-size: 1rem;
   color: #EAEBEC;
   padding: 0;
@@ -975,7 +975,7 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 }
 
 .p-inputtext {
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
   font-size: 1rem;
   color: #EAEBEC;
   background: #1e1e1e;
@@ -1786,12 +1786,12 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 }
 .p-button.p-button-secondary.p-button-outlined, .p-buttonset.p-button-secondary > .p-button.p-button-outlined, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined {
   background-color: transparent;
-  color: #78909C;
+  color: #FFFFFF;
   border: 1px solid;
 }
 .p-button.p-button-secondary.p-button-outlined:enabled:hover, .p-buttonset.p-button-secondary > .p-button.p-button-outlined:enabled:hover, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined:enabled:hover {
   background: rgba(120, 144, 156, 0.04);
-  color: #78909C;
+  color: #bebebe;
   border: 1px solid;
 }
 .p-button.p-button-secondary.p-button-outlined:enabled:active, .p-buttonset.p-button-secondary > .p-button.p-button-outlined:enabled:active, .p-splitbutton.p-button-secondary > .p-button.p-button-outlined:enabled:active {
@@ -3559,7 +3559,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   background: #0d0d0d;
   color: #EAEBEC;
   box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-  border-radius: 6px;
+  border-radius: 20px;
 }
 .p-card .p-card-body {
   padding: 1rem;
@@ -3870,7 +3870,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   margin-right: 0;
 }
 .p-dialog .p-dialog-content {
-  background: #0d0d0d;
+  background: black;
   color: #EAEBEC;
   padding: 0 1.5rem 2rem 1.5rem;
 }
@@ -5516,7 +5516,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
 }
 .p-terminal .p-terminal-input {
   font-size: 1rem;
-   --font-family:"Montserrat", sans-serif !important;
+   font-family:"Montserrat", sans-serif !important;
 }
 
 body .fc a {

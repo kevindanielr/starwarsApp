@@ -31,7 +31,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/fonts/star-jedi.css"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",
@@ -110,7 +111,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/fonts/star-jedi.css"
             ],
             "scripts": []
           }

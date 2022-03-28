@@ -7,7 +7,7 @@
                 </h3>
                 <div class="p-inputgroup">
                     <span class="p-inputgroup-addon"><i class="pi pi-search"></i></span>
-                    <input type="text" pInputText placeholder="Search Characters">
+                    <input (keyup)="search($event)" [(ngModel)]="searchTerm" type="text" pInputText placeholder="Search Characters">
                 </div>
             </div>
         </div>
@@ -24,7 +24,7 @@
 
                 <h6>👋
                     You are in the Characters section. Type to display results. If you want to see all the movies
-                    related to the saga, go to<a>Movies<i class="pi pi-arrow-up"></i></a> section.</h6>
+                    related to the saga, go to<a [routerLink]="['/films']" routerLinkActive="router-link-active"  >Movies<i class="pi pi-arrow-up"></i></a> section.</h6>
             </div>
         </div>
 
@@ -52,12 +52,12 @@
                             [showClear]="true" placeholder="Select a Eye Color">
                             <ng-template pTemplate="selectedItem">
                                 <div class="country-item country-item-value" *ngIf="selectedEyeColor">
-                                    <div>{{selectedEyeColor.eye_color | titlecase}}</div>
+                                    <span [class]="'character-badge eye-' + selectedEyeColor.eye_color"><i class="pi pi-eye"></i> {{ selectedEyeColor.eye_color | titlecase }}</span>
                                 </div>
                             </ng-template>
                             <ng-template let-eyeColor pTemplate="item">
                                 <div class="eyeColor-item">
-                                    <div>{{eyeColor.eye_color | titlecase}}</div>
+                                    <span [class]="'character-badge eye-' + eyeColor.eye_color"><i class="pi pi-eye"></i> {{ eyeColor.eye_color | titlecase }}</span>
                                 </div>
                             </ng-template>
                         </p-dropdown>
@@ -69,12 +69,12 @@
                             [showClear]="true" placeholder="Select a Gender">
                             <ng-template pTemplate="selectedItem">
                                 <div class="country-item country-item-value" *ngIf="selectedGender">
-                                    <div>{{selectedGender.gender | titlecase}}</div>
+                                    <span [class]="'character-badge gender-' + selectedGender.gender.toLowerCase()"><i class="pi pi-eye"></i> {{ selectedGender.gender | titlecase }}</span>
                                 </div>
                             </ng-template>
                             <ng-template let-gender pTemplate="item">
                                 <div class="gender-item">
-                                    <div>{{gender.gender | titlecase}}</div>
+                                    <span [class]="'character-badge gender-' + gender.gender.toLowerCase()"><i class="pi pi-eye"></i> {{ gender.gender | titlecase }}</span>
                                 </div>
                             </ng-template>
                         </p-dropdown>
@@ -102,39 +102,41 @@
             </div>
         </div>
 
-        <div class="p-col-12">
-            <div class="p-grid box title-page" style="margin: -1rem;">
-                <div class="p-col-12">
+    </div>
+    
+    <div class="p-col-12">
 
-                    <div class="p-grid">
-                        <div class="p-col-12 p-md-6 p-lg-6 p-xl-2 animate__animated animate__fadeIn"
-                            *ngFor="let character of this.charactersPage">
-                            <p-card [header]="character?.name | lowercase" styleClass="p-card-shadow">
-                                <ng-template pTemplate="header">
-                                </ng-template>
-                                <p><a>Name:</a> {{ this.character?.name }} </p>
-                                <p><a>Eye color: </a><span
-                                        [class]="'character-badge eye-' + this.character.eye_color"><i
-                                            class="pi pi-eye"></i> {{ this.character?.eye_color | titlecase }}</span>
-                                </p>
-                                <p><a>Gender: </a> <span [class]="'character-badge gender-' + this.character.gender"><i
-                                            class="pi pi-user"></i> {{ this.character?.gender | titlecase }}</span></p>
-
-                                <br>
-                                <p><a>Films:</a></p>
-
-                                <p-listbox [options]="this.character?.filmsArray" optionLabel="title"
-                                    (onClick)="selectFilm( $event )"></p-listbox>
-                            </p-card>
-                        </div>
-                    </div>
-                </div>
+        <div class="p-grid box-character">
+            <div class="p-col-12 p-md-6 p-lg-6 p-xl-2 animate__animated animate__fadeIn"
+                *ngFor="let character of this.charactersPage">
+                <p-card [header]="character?.name | lowercase" styleClass="p-card-shadow">
+                    <ng-template pTemplate="header">
+                    </ng-template>
+                    <p><a>Name:</a> {{ this.character?.name }} </p>
+                    <p><a>Eye color: </a><span
+                            [class]="'character-badge eye-' + this.character.eye_color"><i
+                                class="pi pi-eye"></i> {{ this.character?.eye_color | titlecase }}</span>
+                    </p>
+                    <p><a>Gender: </a> <span [class]="'character-badge gender-' + this.character.gender"><i
+                                class="pi pi-user"></i> {{ this.character?.gender | titlecase }}</span></p>
+    
+                    <br>
+                    <p><a>Films:</a></p>
+    
+                    <p-listbox [options]="this.character?.filmsArray" optionLabel="title"
+                        (onClick)="selectFilm( $event )"></p-listbox>
+                </p-card>
             </div>
+    
+            
         </div>
+    </div>
 
-        <p-paginator #p [rows]="10" [totalRecords]="this.charactersFilter?.length" (onPageChange)="paginate($event)">
-        </p-paginator>
-
+    <div class="p-grid box">
+        <div class=" animate__animated animate__fadeIn">
+            <p-paginator #p [rows]="10" [totalRecords]="this.charactersFilter?.length" (onPageChange)="paginate($event)">
+            </p-paginator>
+        </div>
     </div>
 
 </div>

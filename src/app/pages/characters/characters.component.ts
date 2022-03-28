@@ -59,6 +59,8 @@ export class CharactersComponent implements OnInit {
   idFilm: number;
   loading: boolean = false;
 
+  searchTerm: string = "";
+
   @ViewChild('p', {static: false}) paginator: Paginator;
 
   constructor(
@@ -120,7 +122,7 @@ export class CharactersComponent implements OnInit {
     this.charactersPage = this.charactersFilter.slice(event.page * 10, (event.page + 1) * 10); 
   }
 
-  filter(event) {
+  filter(event?) {
     this.paginator.changePage(0);
     
     if (this.selectedEyeColor === null && this.selectedGender === null && this.selectedFilm === null) {
@@ -171,6 +173,19 @@ export class CharactersComponent implements OnInit {
       this.charactersFilter = tempCharacters;
     }
     
+  }
+
+  search( event ) {   
+    console.log(this.searchTerm);
+     
+    if (this.searchTerm === "") {
+      this.filter();
+    } else {
+      this.charactersFilter = this.charactersFilter.filter( character => character.name.toLowerCase().includes(this.searchTerm.toLowerCase()) )
+      this.charactersPage = this.charactersFilter.slice(0, 10); 
+      console.log(this.charactersFilter);
+      
+    }
   }
 
 }
