@@ -1,10 +1,10 @@
 import {RouterModule} from '@angular/router';
 import {NgModule} from '@angular/core';
 
-import {AppMainComponent} from './app.main.component';
+import {AppMainComponent} from './shared/app.main.component';
 import {AppNotfoundComponent} from './pages/app.notfound.component';
-import { FilmComponent } from './pages/film/film.component';
-import { CharactersComponent } from './pages/characters/characters.component';
+import {FilmComponent} from './pages/film/film.component';
+import {CharactersComponent} from './pages/characters/characters.component';
 
 @NgModule({
     imports: [

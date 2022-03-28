@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 # Demo Link
 
-  https://starwars-netactica-danielrivas.web.app/
+  https://starwars-danielrivas.web.app/
   
 ## Application Information
 
